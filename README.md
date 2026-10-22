@@ -33,7 +33,7 @@ You need 2 items to cross the threshold (or force it for 2 hearts). Each item st
 
 ## Tuning without code
 
-Select the **Floor** node in `scenes/main.tscn` and look at the Inspector: items needed to cross, heart cost, hearts, breach chance, boss health, roaming beasts. Select any cabinet to change its name, color, mini-game, containment, or item. Move cabinets by dragging them in the 2D view.
+Select the **Floor** node in `scenes/main.tscn` and look at the Inspector: camera zoom, items needed to cross, heart cost, hearts, breach chance, boss health, roaming beasts. Select any cabinet to change its name, color, mini-game, containment, or item. Move cabinets by dragging them in the 2D view.
 
 ## Folders
 

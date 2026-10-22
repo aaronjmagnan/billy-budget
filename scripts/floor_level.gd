@@ -18,6 +18,10 @@ extends Node2D
 @export_group("Player")
 @export var player_max_hearts := 6
 
+@export_group("Camera")
+## How close the camera sits. 1.0 shows the whole room; higher = bigger characters.
+@export_range(1.0, 3.0, 0.1) var camera_zoom := 1.7
+
 @export_group("Containment")
 ## Seconds between checks for cracked cabinets failing on their own.
 @export var late_breach_interval := 12.0
@@ -67,6 +71,7 @@ var _target_door := false
 
 func _ready() -> void:
 	_build_walls()
+	_add_camera()
 	for child in get_children():
 		if child is Cabinet:
 			cabinets.append(child)
@@ -283,6 +288,19 @@ func show_message(text: String, seconds: float) -> void:
 
 
 # --- Room building and drawing ------------------------------------------
+
+func _add_camera() -> void:
+	var cam := Camera2D.new()
+	cam.zoom = Vector2(camera_zoom, camera_zoom)
+	cam.position_smoothing_enabled = true
+	cam.position_smoothing_speed = 7.0
+	cam.limit_left = int(ROOM.position.x) - 20
+	cam.limit_top = int(ROOM.position.y) - 40  # room for the HUD strip
+	cam.limit_right = int(ROOM.end.x) + 20
+	cam.limit_bottom = int(ROOM.end.y) + 40
+	player.add_child(cam)
+	cam.make_current()
+
 
 func _build_walls() -> void:
 	var rects := [
