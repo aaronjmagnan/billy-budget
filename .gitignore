@@ -1,0 +1,14 @@
+# Godot 4 cache and generated files
+.godot/
+/android/
+
+# Exports
+/build/
+*.exe
+*.pck
+*.dmg
+*.zip
+
+# OS clutter
+.DS_Store
+Thumbs.db
