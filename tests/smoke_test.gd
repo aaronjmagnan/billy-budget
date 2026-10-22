@@ -62,6 +62,16 @@ func _run() -> void:
 	var echo: Cabinet = level.get_node("EchoGrid")
 	var lock: Cabinet = level.get_node("PressureLock")
 	var player: Player = level.player
+	check(player._sprite != null, "Bud's sprite sheet loaded")
+	check(player._sprite.sprite_frames.get_animation_names().size() == Player.BUD_ANIMATIONS.size(), "all of Bud's animations built")
+	var wisp: Beast = null
+	for e in level.get_tree().get_nodes_in_group("enemies"):
+		if e is Beast and e.escaped_from == null:
+			wisp = e
+	if wisp != null:
+		var hp_before := wisp.hp
+		wisp.take_hit(0.1, Vector2.RIGHT)  # a paper-weak hit
+		check(is_equal_approx(wisp.hp, hp_before - 0.1), "fractional damage lands (0.1)")
 
 	# Each mini-game type runs to completion on its own (no input = a loss).
 	await play_cabinet(level, beat, -1)

@@ -220,7 +220,7 @@ func _grant_item(c: Cabinet, kind: String) -> void:
 			show_message("Cracked %s. It only half works." % c.item_name, 3.0)
 		"raw":
 			boss.weaken_facet(c.facet_index, 1.0)
-			player.strike_damage += 1
+			player.strike_damage += 1.0
 			player.change_max_hearts(-1)
 			show_message("RAW %s: +1 strike damage, but -1 max heart." % c.item_name, 3.5)
 
@@ -231,8 +231,8 @@ func _breach(c: Cabinet) -> void:
 	if door_locked_behind:
 		spawn = Vector2(640, DIVIDER_Y - 40.0)  # it follows you into the arena
 	var beast := _spawn_beast(spawn, c)
-	beast.max_hp = 6
-	beast.hp = 6
+	beast.max_hp = 6.0
+	beast.hp = 6.0
 	show_message("The %s beast broke free! Beat it for a RAW item." % c.cabinet_name, 3.0)
 
 
@@ -253,14 +253,14 @@ func _spawn_beast(at: Vector2, from_cabinet: Cabinet) -> Beast:
 	if from_cabinet != null:
 		beast.escaped_from = from_cabinet
 		beast.color = from_cabinet.neon_color
-		beast.max_hp = 6
+		beast.max_hp = 6.0
 		beast.speed = 120.0
 		beast.hit_radius = 18.0
 		beast.always_hunting = true
 		beast.defeated.connect(_on_escaped_beast_defeated)
 	else:
 		beast.color = Color(0.55, 0.45, 0.85)
-		beast.max_hp = 2
+		beast.max_hp = 2.0
 		beast.speed = 85.0
 	add_child(beast)
 	return beast

@@ -1,10 +1,10 @@
-# ARCADE (working title) - Design Document v0.1
+# Billy Budget's Cage Arcade - Design Document v0.2
 
 North star for the project. Everything built should serve the premise and the loop below. Revise this file before revising the code.
 
 ## One-line pitch
 
-A kid who has never played a video game sneaks into a sealed-off arcade to rescue friends who were eaten by the beasts trapped inside its machines. A roguelite where every arcade cabinet is a different mini-game, losing lets the beast out, and fighting it is the other way to win.
+Bud, a teenager who has never played a video game, sneaks into a sealed-off arcade to rescue friends who were eaten by the beasts trapped inside its machines. A roguelite where every arcade cabinet is a different mini-game, losing lets the beast out, and fighting it is the other way to win.
 
 ## Tone
 
@@ -12,16 +12,26 @@ Eerie and wistful, never gory. Dark arcade, humming screens, something alive in 
 
 ## Premise
 
-- A game designer discovered that a game built around a beast acts as a trap. The beast is pulled into the cabinet. Every time the game is played, the cabinet distills a little of the beast into a usable item.
+- Billy Budget, a game designer, discovered that a game built around a beast acts as a trap. The beast is pulled into the cabinet. Every time the game is played, the cabinet distills a little of the beast into a usable item.
 - The arcade is the designer's menagerie. It goes far deeper than the building should allow.
-- The designer vanished. The same night, a group of kids disappeared inside. The news reports the military has cordoned off the block because the arcade is "unstable."
+- Billy Budget vanished. The same night, a group of kids disappeared inside. The news reports the military has cordoned off the block because the arcade is "unstable."
 - The hero, one of the group who was not there that night, has never gamed. They sneak in through a gap in the perimeter to bring their friends back.
 
 ## Protagonist
 
-- A kid, roughly 12. No gaming experience. This is the tutorial: the game teaches them (and the player) each cabinet honestly.
+- **Bud**, a teenager. No gaming experience. This is the tutorial: the game teaches him (and the player) each cabinet honestly.
+- Look: scraggly brown hair, white hoodie, baggy gray pants with rolled cuffs, chunky white sneakers. Chunky proportions that read at 32x32.
+- Laid back: idle with hands in his hoodie pocket. Secretly a boxer and weightlifter: he snaps into a boxing guard when beasts are near. Fights bare-fisted by default; jab is his strike, a ducking boxer's slip is his dash. Later actions can draw on boxing and lifting.
+- Outfits: white hoodie is the default; dark gray hoodie and black hoodie with white trim are unlockable or selectable outfits.
+- In multiplayer, players can name their own character. Bud may later appear as a helper NPC or Easter egg.
 - Motivation is always the friends, never "beating the arcade." Items are "things I pulled out of these machines so I can go deeper," not loot.
 - Grows across runs through unlocks and through the player's own skill.
+
+## Pocket inventory and improvised weapons
+
+- Bud's inventory is the front pocket of his hoodie. Absurdly large things sometimes fit in it; pulling them out is part of the joke.
+- Anything in the pocket can be swung at a beast. Damage depends on the item and can be fractional: a piece of paper does almost nothing, a joystick does real damage, something huge hits hard but slowly. Damage values are floats in code for this reason.
+- Inventory rules, limits, and perks are not designed yet.
 
 ## The friends (meta-progression)
 
@@ -129,5 +139,6 @@ Target run length: 30 minutes. 8 to 12 floors. Mini-games 45 to 90 seconds. Boss
 
 - Boss loss: run over, or diminished pass-through?
 - Exact number of friends (4 feels right: one per starting cabinet type).
-- Name of the arcade and the designer.
-- Art direction: pixel, hand-drawn, or low-poly 3D rendered 2D.
+- ~~Name of the arcade and the designer.~~ Billy Budget's Cage Arcade; Billy Budget is the designer.
+- Inventory rules: pocket size, what counts as an item, perks.
+- ~~Art direction.~~ 32x32 pixel art (Bud's sheet is the reference for scale and outline style).

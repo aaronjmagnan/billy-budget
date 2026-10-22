@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 signal defeated(beast: Beast)
 
-@export var max_hp := 3
+@export var max_hp := 3.0
 @export var speed := 90.0
 @export var color := Color(0.6, 0.45, 0.95)
 @export var hit_radius := 14.0
@@ -17,7 +17,7 @@ signal defeated(beast: Beast)
 var escaped_from: Cabinet = null
 var player: Player = null
 
-var hp := 3
+var hp := 3.0
 var dead := false
 var _knockback := Vector2.ZERO
 var _flash := 0.0
@@ -71,13 +71,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func take_hit(damage: int, direction: Vector2) -> void:
+func take_hit(damage: float, direction: Vector2) -> void:
 	if dead or _spawn_t > 0.0:
 		return
 	hp -= damage
 	_flash = 0.1
 	_knockback = direction * 340.0
-	if hp <= 0:
+	if hp <= 0.0:
 		dead = true
 		remove_from_group("hittable")
 		remove_from_group("enemies")

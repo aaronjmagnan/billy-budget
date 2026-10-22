@@ -53,10 +53,10 @@ func activate() -> void:
 	_attack_t = 1.4
 
 
-func take_hit(damage: int, _direction: Vector2) -> void:
+func take_hit(damage: float, _direction: Vector2) -> void:
 	if not active or dead:
 		return
-	hp -= float(damage) * damage_multiplier()
+	hp -= damage * damage_multiplier()
 	_flash = 0.12
 	if hp <= 0.0:
 		hp = 0.0

@@ -1,4 +1,4 @@
-# Billy Budget (working title)
+# Billy Budget's Cage Arcade
 
 A roguelite set in a sealed-off arcade. Every cabinet holds a trapped beast and a different mini-game. Win to distill an item, lose and the beast may break free. See [DESIGN.md](DESIGN.md) for the full vision.
 

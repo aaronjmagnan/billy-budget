@@ -26,8 +26,8 @@ func _draw() -> void:
 	for i in p.max_hearts:
 		var c := Vector2(58.0 + float(i) * 28.0, 20.0)
 		_draw_heart(c, Color(1, 0.3, 0.4) if i < p.hearts else Color(0.25, 0.2, 0.3))
-	if p.strike_damage > 1:
-		draw_string(font, Vector2(58.0 + float(p.max_hearts) * 28.0, 26.0), "STRIKE x%d" % p.strike_damage, HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color(1, 0.8, 0.4))
+	if p.strike_damage != 1.0:
+		draw_string(font, Vector2(58.0 + float(p.max_hearts) * 28.0, 26.0), "STRIKE x%s" % str(snappedf(p.strike_damage, 0.1)), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color(1, 0.8, 0.4))
 
 	# Items, top right
 	var x := vp.x - 48.0
