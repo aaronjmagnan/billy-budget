@@ -29,6 +29,11 @@ func _draw() -> void:
 	if p.strike_damage != 1.0:
 		draw_string(font, Vector2(58.0 + float(p.max_hearts) * 28.0, 26.0), "STRIKE x%s" % str(snappedf(p.strike_damage, 0.1)), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color(1, 0.8, 0.4))
 
+	# A beast has taken over the music
+	if not get_tree().get_nodes_in_group("music_takeover").is_empty():
+		var pulse := 0.6 + 0.4 * sin(Time.get_ticks_msec() / 120.0)
+		draw_string(font, Vector2(48.0, 52.0), "BEAT BEAST HAS THE AUX", HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color(1, 0.4, 0.85, pulse))
+
 	# Items, top right
 	var x := vp.x - 48.0
 	for i in range(level.items.size() - 1, -1, -1):

@@ -24,7 +24,9 @@ enum State { IDLE, DONE, BREACHED }
 		queue_redraw()
 ## Which of the boss's four facets this cabinet's item counters (0 to 3).
 @export_range(0, 3) var facet_index := 0
-@export var item_name := "Metronome Shard"
+@export var item_name := "Boom Box"
+## Which beast breaks out when containment fails. "generic" is the placeholder blob.
+@export_enum("generic", "beat_beast") var beast_kind := "generic"
 
 const SIZE := Vector2(64, 104)
 

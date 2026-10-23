@@ -16,7 +16,8 @@ game_type = "rhythm"
 neon_color = Color(1, 0.25, 0.75, 1)
 max_containment = 3
 facet_index = 0
-item_name = "Metronome Shard"
+item_name = "Boom Box"
+beast_kind = "beat_beast"
 
 [node name="EchoGrid" parent="." instance=ExtResource("3_cabinet")]
 position = Vector2(470, 470)

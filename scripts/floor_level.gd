@@ -231,8 +231,6 @@ func _breach(c: Cabinet) -> void:
 	if door_locked_behind:
 		spawn = Vector2(640, DIVIDER_Y - 40.0)  # it follows you into the arena
 	var beast := _spawn_beast(spawn, c)
-	beast.max_hp = 6.0
-	beast.hp = 6.0
 	show_message("The %s beast broke free! Beat it for a RAW item." % c.cabinet_name, 3.0)
 
 
@@ -247,7 +245,13 @@ func _roll_late_breaches() -> void:
 
 
 func _spawn_beast(at: Vector2, from_cabinet: Cabinet) -> Beast:
-	var beast := Beast.new()
+	var beast: Beast
+	if from_cabinet != null and from_cabinet.beast_kind == "beat_beast":
+		var wolf := BeatBeast.new()
+		wolf.room_bounds = ROOM
+		beast = wolf
+	else:
+		beast = Beast.new()
 	beast.position = at
 	beast.player = player
 	if from_cabinet != null:
@@ -258,6 +262,9 @@ func _spawn_beast(at: Vector2, from_cabinet: Cabinet) -> Beast:
 		beast.hit_radius = 18.0
 		beast.always_hunting = true
 		beast.defeated.connect(_on_escaped_beast_defeated)
+		if beast is BeatBeast:
+			beast.max_hp = 9.0
+			beast.speed = 105.0
 	else:
 		beast.color = Color(0.55, 0.45, 0.85)
 		beast.max_hp = 2.0

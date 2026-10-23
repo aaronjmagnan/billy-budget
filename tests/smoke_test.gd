@@ -132,6 +132,58 @@ func _run() -> void:
 	level.queue_free()
 	await frames(3)
 
+	# --- Beat Beast -----------------------------------------------------------
+	level = await load_level()
+	var kid: Player = level.player
+	kid.hearts = 999
+	var keeper: Cabinet = level.get_node("BeatKeeper")
+	keeper.containment = 0
+	level._breach(keeper)
+	var wolf: BeatBeast = null
+	for e in level.get_tree().get_nodes_in_group("enemies"):
+		if e is BeatBeast:
+			wolf = e
+	check(wolf != null, "breaking BEAT KEEPER releases Beat Beast")
+	check(wolf != null and wolf.is_in_group("music_takeover"), "Beat Beast takes over the music")
+	check(wolf != null and wolf._sprite != null, "Beat Beast's sprite sheet loaded")
+	var seen := {}
+	var max_waves := 0
+	# Stand at blast range, then up close, and watch what he does.
+	for phase_i in 2:
+		var gap := 250.0 if phase_i == 0 else 90.0
+		for i in 420:
+			if not is_instance_valid(wolf):
+				break
+			kid.global_position = wolf.global_position + Vector2(gap, 0)
+			kid.hearts = 999
+			seen[wolf.state] = true
+			var waves := 0
+			for n in level.get_children():
+				if n is BossProjectile and n.style == "wave":
+					waves += 1
+			max_waves = maxi(max_waves, waves)
+			await physics_frame
+	check(seen.has("blast") and max_waves > 0, "Beat Beast blasts sound waves at range (%d waves seen)" % max_waves)
+	check(seen.has("windmill") and seen.has("freeze"), "Beat Beast windmills up close, then freezes")
+	# Moonwalk dodge: force his luck.
+	wolf.moonwalk_chance = 1.0
+	wolf._moon_cd = 0.0
+	wolf._enter("approach", 0.0)
+	var hp_before := wolf.hp
+	wolf.take_hit(1.0, Vector2.RIGHT)
+	check(wolf.state == "moonwalk" and wolf.hp == hp_before, "Beat Beast can moonwalk out of a punch")
+	wolf.moonwalk_chance = 0.0
+	guard = 0
+	while is_instance_valid(wolf) and guard < 600:
+		if wolf.state != "moonwalk":
+			wolf.take_hit(1.0, Vector2.RIGHT)
+		guard += 1
+		await physics_frame
+	check(level.items.size() > 0 and level.items[-1]["name"] == "Boom Box" and level.items[-1]["kind"] == "raw", "beating Beat Beast drops the Boom Box")
+	check(level.get_tree().get_nodes_in_group("music_takeover").is_empty(), "the music comes back once he's beaten")
+	level.queue_free()
+	await frames(3)
+
 	# --- Forcing the threshold with no items ------------------------------
 	level = await load_level()
 	var p: Player = level.player

@@ -12,8 +12,10 @@ Eerie and wistful, never gory. Dark arcade, humming screens, something alive in 
 
 ## Premise
 
-- Billy Budget, a game designer, discovered that a game built around a beast acts as a trap. The beast is pulled into the cabinet. Every time the game is played, the cabinet distills a little of the beast into a usable item.
-- The arcade is the designer's menagerie. It goes far deeper than the building should allow.
+- Real beasts came to town. Billy Budget, a game designer, built cages to hold them.
+- The beasts kept piling up. Billy wanted to turn the bad into good, so he turned the cages into arcade games: a game built around a caged beast distills a little of it into a usable item every time someone plays. That building is Billy Budget's Cage Arcade, and every cabinet started life as a cage.
+- Billy is sympathetic, not a villain: a man stuck with a problem who found a clever, risky answer.
+- The arcade goes far deeper than the building should allow.
 - Billy Budget vanished. The same night, a group of kids disappeared inside. The news reports the military has cordoned off the block because the arcade is "unstable."
 - The hero, one of the group who was not there that night, has never gamed. They sneak in through a gap in the perimeter to bring their friends back.
 
@@ -88,6 +90,22 @@ Target run length: 30 minutes. 8 to 12 floors. Mini-games 45 to 90 seconds. Boss
 - The oldest beast on the floor, in a cabinet that has been failing for years.
 - Has four facets. Each of the floor's cabinet items counters one. Two items: beatable the hard way. Three: a fair fight. Four: a victory lap.
 - Losing to the boss (to decide): end of run, or the boss takes something and lets you through diminished.
+
+## Beasts
+
+Real creatures, all invented for this game (not borrowed from folklore or other media). Each cabinet beast belongs to its game: its look, its attacks, and the item it leaves behind all come from its cabinet.
+
+Count: about 20 for the full game (8 floor bosses, ~10 cabinet beasts reused across floors in tougher versions, 2 or 3 roaming types). The first floor needs 6: 4 cabinet beasts, 1 roaming type, 1 boss.
+
+### Beat Beast (BEAT KEEPER)
+
+- An old-school, Beat Street-era street wolf. Gray fur, neon pink track jacket with white stripes, black track pants, white old-school sneakers, cocky grin, boom box on his shoulder. 48x48, a head taller than Bud.
+- When he's loose he takes over the music: the arcade soundtrack becomes his old-school breakbeat. (Music to be composed by the owner; the code already knows when he has the aux.)
+- Fights with all three of his moves:
+  - Boom box blast: at range, he aims the speakers and fires a fan of sound waves.
+  - Windmill: up close, he drops into a breakdance spin and slides at you, then holds a freeze pose. The freeze is the opening: he takes double damage.
+  - Moonwalk: sometimes he glides right out of a punch, then comes back swinging.
+- Drops the Boom Box (BEAT KEEPER's item). Later it can be a pocket weapon (heavy, clunky, good damage) and an ability (speaker blast that knocks beasts back).
 
 ## Combat
 
